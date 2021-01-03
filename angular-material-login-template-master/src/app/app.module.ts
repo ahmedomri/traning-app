@@ -5,6 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+/*firebase */
+import {AngularFireModule} from '@angular/fire';
+import { FirebaseService } from './services/firebase.service';
+
 
 /* Angular Material */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -25,6 +29,15 @@ import { HomeComponent } from './components/home/home.component';
 import { DialogElementsExampleDialogComponent } from './components/dialog-elements-example-dialog/dialog-elements-example-dialog.component';
 
 
+var firebaseConfig = {
+  apiKey: "AIzaSyDHMVQDlgGyvtZFuWMxG1t5gIwXtXlxrC0",
+  authDomain: "trainingapp-f27e4.firebaseapp.com",
+  projectId: "trainingapp-f27e4",
+  storageBucket: "trainingapp-f27e4.appspot.com",
+  messagingSenderId: "824340661567",
+  appId: "1:824340661567:web:b714770708ac086a52bf8a"
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,9 +57,10 @@ import { DialogElementsExampleDialogComponent } from './components/dialog-elemen
     ReactiveFormsModule,
     FormsModule,
     FlexLayoutModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [],
+  providers: [FirebaseService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

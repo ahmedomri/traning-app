@@ -10,7 +10,7 @@
          
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>
-          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"  placeholder="Ex. pat@example.com">
+          <input #emailSignup type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"  placeholder="Ex. pat@example.com">
         
           
           <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
@@ -22,7 +22,7 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
-          <input type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" >
+          <input #passwordSignup type="password" matInput placeholder="Password" [formControl]="passwordFormControl" [errorStateMatcher]="matcher" >
           <mat-error *ngIf="!passwordFormControl.hasError('minLength') && !passwordFormControl.hasError('required') ">
             Password (6 characters minimum)
          </mat-error>
@@ -50,9 +50,10 @@
       </mat-card-content>
 
 
-      <button mat-stroked-button color="accent" class="btn-block" [disabled]="!confirmed.checked">Register</button>
+      <button mat-stroked-button color="accent" class="btn-block" [disabled]="!confirmed.checked"
+      (click)="firebaseService.signup(emailSignup.value,passwordSignup.value)">Register</button>
 
-      <button type="submit"  mat-stroked-button color="accent" class="btn-block">Register</button>
+      
 
 
     </form>

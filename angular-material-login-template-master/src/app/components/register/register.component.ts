@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { FirebaseService } from './../../services/firebase.service';
 
 
 /** Error when invalid control is dirty, touched, or submitted. */
@@ -19,13 +20,19 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 
 export class RegisterComponent implements OnInit {
 
-  Roles: any = ['Admin', 'Author', 'Reader'];
+  
 
-  constructor() { }
+  isSignedIn = false;
+  constructor(public firebaseService : FirebaseService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    if(localStorage.getItem('user')!== null)
+    this.isSignedIn= true
+    else
+    this.isSignedIn = false
   }
 
+  
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,

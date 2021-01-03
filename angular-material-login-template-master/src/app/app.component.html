@@ -1,10 +1,20 @@
 <!-- Toolbar -->
 <mat-toolbar color="primary" class="app-header">
   <div><a href="" target="_blank" class="positronx">Training App</a></div>
-  <span class="nav-tool-items">
-    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+  <span *ngIf="router.url === '/login'" class="nav-tool-items">
+    
     <a mat-button mat-raised-button routerLink="register" routerLinkActive="active">Register</a>
   </span>
+  <span *ngIf="router.url === '/register'" class="nav-tool-items">
+    <a mat-button routerLink="login" routerLinkActive="active">Log in</a>
+    
+  </span>
+  <span *ngIf="router.url === '/home'" class="nav-tool-items">
+    <a mat-button mat-raised-button color="warn" routerLink="login" routerLinkActive="active"
+    (click)="firebaseService.logout()">Log out</a>
+    
+  </span>
+
 </mat-toolbar>
 
 <router-outlet></router-outlet>

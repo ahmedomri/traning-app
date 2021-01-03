@@ -1,12 +1,22 @@
 
 
-<h1 mat-dialog-title>New training</h1>
+<h1 mat-dialog-title >New training</h1>
 <div mat-dialog-content >
   
   <h1>{{timeLeft}} </h1>
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="close()" mat-raised-button color="warn">close</button>
+  
   <button (click)='startTimer()' mat-raised-button color="primary">Start Timer</button>
-  <button (click)='pauseTimer()' mat-raised-button color="accent">Pause</button>
+  <button (click)='pauseTimer()' mat-raised-button color="accent" style="margin-left: 30px;">Pause</button>
+  <form class="example-form">
+    
+    <mat-form-field class="example-full-width">
+      <mat-label>description</mat-label>
+      <textarea matInput placeholder="description"></textarea>
+    </mat-form-field>
+  </form>
+  <br>
+  <button mat-button mat-dialog-close (click)="close()" mat-raised-button color="warn">close</button>
+  <button mat-raised-button color="primary" style="margin-left:60px;">save</button>
 </div>
