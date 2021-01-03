@@ -4,9 +4,13 @@
       <mat-card-title>Register</mat-card-title>
     </mat-card-header>
 
+    <mat-error *ngIf="firebaseService.errorRegister!==null ">
+      {{firebaseService.errorRegister}}
+   </mat-error>
     <form class="example-form" #loginForm="ngForm">
 
       <mat-card-content>
+
          
         <mat-form-field class="example-full-width">
           <mat-label>Email</mat-label>

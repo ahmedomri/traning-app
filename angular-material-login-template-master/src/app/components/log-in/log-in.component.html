@@ -7,6 +7,9 @@
   
       <form class="example-form">
         <mat-card-content>
+          <mat-error *ngIf="firebaseService.errorLogin!==null ">
+            {{firebaseService.errorLogin}}
+         </mat-error>
           <mat-form-field class="example-full-width">
             <mat-label>Email</mat-label>
             <input #email type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"  placeholder="Ex. pat@example.com">
